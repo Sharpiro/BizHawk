@@ -128,5 +128,9 @@ namespace BizHawk.Client.Common
 		event StateLoadedEventHandler SavestateLoaded;
 
 		event StateSavedEventHandler SavestateSaved;
+
+		InputManager InputManager { get; }
+
+		IMovieSession MovieSession { get; }
 	}
 }

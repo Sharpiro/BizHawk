@@ -223,5 +223,9 @@ namespace BizHawk.Client.Common
 		public int Xpos() => _mainForm.DesktopLocation.X;
 
 		public int Ypos() => _mainForm.DesktopLocation.Y;
+
+		public InputManager InputManager => _mainForm.InputManager;
+
+		public IMovieSession MovieSession => _mainForm.MovieSession;
 	}
 }

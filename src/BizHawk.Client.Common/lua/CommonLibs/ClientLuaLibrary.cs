@@ -459,5 +459,32 @@ namespace BizHawk.Client.Common
 				Log(result.Error);
 			}
 		}
+
+		[LuaMethodExample("client.setmouseactive(false)")]
+		[LuaMethod("setmouseactive", "Enables/Disables touch screen input via mouse")]
+		public void SetMouseActive(bool active)
+		{
+			var config = ((EmulationApi) APIs.Emulation).ForbiddenConfigReference;
+			var controllerName = "NDS Controller";
+			var controllerConfig = config.AllTrollersAnalog[controllerName];
+			var xBind = new AnalogBind
+			{
+				Value = active ? "WMouse X" : "",
+				Mult = 1.0f,
+				Deadzone = 0.0f,
+			};
+			var yBind = new AnalogBind
+			{
+				Value = active ? "WMouse Y" : "",
+				Mult = 1.0f,
+				Deadzone = 0.0f,
+			};
+			controllerConfig["Touch X"] = xBind;
+			controllerConfig["Touch Y"] = yBind;
+
+			APIs.EmuClient.InputManager.SyncControls(
+				Emulator, APIs.EmuClient.MovieSession, config
+			);
+		}
 	}
 }

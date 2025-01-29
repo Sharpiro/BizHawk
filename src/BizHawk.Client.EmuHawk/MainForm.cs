@@ -1077,7 +1077,7 @@ namespace BizHawk.Client.EmuHawk
 
 		public event StateSavedEventHandler SavestateSaved;
 
-		private readonly InputManager InputManager;
+		public InputManager InputManager { get; private init; }
 
 		private IVideoProvider _currentVideoProvider = NullVideo.Instance;
 

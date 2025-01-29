@@ -159,5 +159,9 @@ namespace BizHawk.Client.Common
 		int Xpos();
 
 		int Ypos();
+
+		InputManager InputManager { get; }
+
+		IMovieSession MovieSession { get; }
 	}
 }
